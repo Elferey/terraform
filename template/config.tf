@@ -10,7 +10,3 @@ terraform {
 provider "yandex" {
   zone = "default-ru-central1-b"
 }
-
-resource "yandex_compute_instance" "vm-1" {
-  name = "terraform1"
-}
