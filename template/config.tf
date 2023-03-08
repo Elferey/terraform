@@ -9,4 +9,5 @@ terraform {
 
 provider "yandex" {
   zone = "default-ru-central1-b"
+  token: y0_AgAAAABZGe1BAATuwQAAAADeCfMBYvcXU_fSRgCQ3AHpBuENy16kaTk
 }
