@@ -1,4 +1,6 @@
-resource "yandex_compute_instance" "default" {
+
+
+resource "yandex_compute_instance" "vm-1" {
   name = "terraform1"
 
   resources {
@@ -22,7 +24,7 @@ resource "yandex_compute_instance" "default" {
   }
 }
 
-resource "yandex_compute_instance" "default" {
+resource "yandex_compute_instance" "vm-2" {
   name = "terraform2"
 
   resources {
