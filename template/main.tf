@@ -1,11 +1,11 @@
 
 
-resource "yandex_compute_instance" "vm-1" {
-  name = "terraform1"
+resource "yandex_compute_instance" "vm-3" {
+  name = "terraform3"
 
   resources {
-    cores  = 2
-    memory = 2
+    cores  = 4
+    memory = 4
   }
 
   boot_disk {
@@ -25,12 +25,12 @@ resource "yandex_compute_instance" "vm-1" {
   }
 }
 
-resource "yandex_compute_instance" "vm-2" {
-  name = "terraform2"
+resource "yandex_compute_instance" "vm-4" {
+  name = "terraform4"
 
   resources {
-    cores  = 2
-    memory = 2
+    cores  = 4
+    memory = 4
   }
 
   boot_disk {
