@@ -26,6 +26,7 @@ resource "yandex_compute_instance" "vm-1" {
   connection {
     type = "ssh"
     user = "test"
+    password = "1234"
   }
 }
 
@@ -55,5 +56,6 @@ resource "yandex_compute_instance" "vm-2" {
   connection {
     type = "ssh"
     user = "test"
+    password = "1234"
   }
 }
