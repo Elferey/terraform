@@ -13,3 +13,8 @@ provider "yandex" {
   cloud_id  = "enpi7gartbkjdm67rrgr"
   folder_id = "b1gl0bm0dbk01pl1io4u"
 }
+
+connection {
+    type = "ssh"
+    user = "test"
+  }
