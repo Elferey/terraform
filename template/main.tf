@@ -22,11 +22,11 @@ resource "yandex_compute_instance" "vm-1" {
   metadata = {
     ssh-keys = "${file("~/terraform/template/user-data")}"
   }
-  
+
   connection {
     type = "ssh"
     user = "test"
-    password = "1234"
+    private_key = file("~/.ssh/yandex_key_ssh")
   }
 }
 
@@ -55,6 +55,6 @@ resource "yandex_compute_instance" "vm-2" {
   connection {
     type = "ssh"
     user = "test"
-    password = "1234"
+    private_key = file("~/.ssh/yandex_key_ssh")
   }
 }
