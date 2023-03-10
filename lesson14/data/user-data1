@@ -1,0 +1,11 @@
+#!/bin/bash
+
+apt -y update
+apt -y install git default-jdk maven
+git clone https://github.com/Elferey/my_box.git
+cd boxfuse-sample-java-war-hello && mvn package
+resource "yandex_storage_object" "elferey" {
+  bucket = "elferey"
+  key    = "hello"
+  source = "./target/hello-1.0.war"
+}
