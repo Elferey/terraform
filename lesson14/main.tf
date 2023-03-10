@@ -22,7 +22,7 @@ resource "yandex_compute_instance" "vm-1" {
   metadata = {
     ssh-keys = "ssh-keys: elf1:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDY5ofQ6GyZkHOPF9FOpUxWqnLc1TsI9SyHejELL/YkzGMhk5zbc7fM+OsZXsEVY78e1iZt8a7k6H2MJjF909xdKkl+wWL9sNcDEcf/Ril3ZclHREKbMqDQRcPKcFDPhdhrsoOEGGjbC7dfpX2LUwtyV9u9v1txD5ezAy951FXERsXpU1HeuN3X2j0BoHoiLQ7CZjmr0U82bD9cIjEdStF3HgdWDJe+cBGBZtNPlE311sIMjooPkkWwTyEf9acICw3UCxM/Mz9xu8t0jP/q5p2lp6IOsbfuKQI1FbMazwBHqBvCyfYOw8R8F/Dt8I+ut7Rx1a6kGCaQsjtyS8kWPTpsFE5WlEgmqCG2Bk9cxjfppNGd9+qXbQFWmBZiHem233TXIr246awnTC1c2Zi3BtTGh3ixIriYARAMjIR8BRNmu05dZDlaMfH/oYLGcFWfrZ5Gd+ybNTa24xFSp6DaRSwz/yqgLRikXphHhvYpyFDZCOpY46O/XNnvddk329cZETc= elf@Yanov"
     user-data = "${file("~/terraform/template/user-data")}"
-    user-data2 = file("./data/user-data")
+    user-data2 = file("./data/user-data1")
   }
 }
 
