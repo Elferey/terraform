@@ -3,7 +3,7 @@
 apt -y update
 apt -y install git && apt install -y default-jdk && apt install -y maven
 git clone https://github.com/Elferey/my_box.git
-cd boxfuse-sample-java-war-hello && mvn package
+cd my_box && mvn package
 resource "yandex_storage_object" "elferey" {
   bucket = "elferey"
   key    = "hello"
