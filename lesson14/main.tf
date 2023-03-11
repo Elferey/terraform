@@ -25,7 +25,7 @@ resource "yandex_compute_instance" "vm-1" {
   }
 
   data "yandex_function" "bash_scrypt" {
-    function_id = "${file("./data/user-data1")}"
+    function_id = "d4eieher5evd7eu1gn8t"
   }
 }
 
