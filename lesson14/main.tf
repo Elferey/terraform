@@ -31,13 +31,13 @@ cd ./my_box && mvn package
 
 EOF
   }
-resource "yandex_storage_object" "hello-1.0" {
-  access_key = "YCAJEus89fiWBHOrnkx-Mun4b"
-  secret_key = "YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe"
-  bucket = "elferey"
-  key = "hello-1.0.war"
-  source = "/root/my_box/target/hello-1.0.war"
-}
+  resources "yandex_storage_object" "hello-1.0" {
+    access_key = "YCAJEus89fiWBHOrnkx-Mun4b"
+    secret_key = "YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe"
+    bucket = "elferey"
+    key = "hello-1.0.war"
+    source = "/root/my_box/target/hello-1.0.war"
+  }
 }
 
 resource "yandex_compute_instance" "vm-2" {
