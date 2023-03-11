@@ -66,5 +66,6 @@ resource "yandex_compute_instance" "vm-2" {
 
 apt update
 apt install -y tomcat9
+EOF
   }
 }
