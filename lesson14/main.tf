@@ -21,7 +21,14 @@ resource "yandex_compute_instance" "vm-1" {
   
     metadata = {
     ssh-keys = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
-    user-data = "${file("./data/user-data1")}"
+    user-data = <<EOF
+#!/bin/bash
+
+apt -y update
+apt -y install git default-jdk maven
+cd ~/ && git clone https://github.com/Elferey/my_box.git
+cd ./my_box && mvn package
+EOF
   }
 }
 
