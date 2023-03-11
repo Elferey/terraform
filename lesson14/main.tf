@@ -29,8 +29,14 @@ apt -y install git default-jdk maven unzip
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 ./aws/install
-echo -e "[default]\nregion = ru-central1\noutput = json">~/.aws/config 
-echo -e "[default]\naws_access_key_id = YCAJEus89fiWBHOrnkx-Mun4b\naws_secret_access_key = YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe">~/.aws/credentials
+key_id="YCAJEus89fiWBHOrnkx-Mun4b"
+key="YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe"
+region="ru-central1"
+format="json"
+aws configure set aws_access_key_id $key_id
+aws configure set aws_secret_access_key $key
+aws configure set region $region
+aws configure set output $format
 cd ~/ && git clone https://github.com/Elferey/my_box.git
 cd ./my_box && mvn package
 aws --endpoint-url=https://storage.yandexcloud.net/ \
@@ -69,8 +75,14 @@ apt install -y tomcat9
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 ./aws/install
-echo -e "[default]\nregion = ru-central1\noutput = json">~/.aws/config
-echo -e "[default]\naws_access_key_id = YCAJEus89fiWBHOrnkx-Mun4b\naws_secret_access_key = YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe">~/.aws/credentials
+key_id="YCAJEus89fiWBHOrnkx-Mun4b"
+key="YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe"
+region="ru-central1"
+format="json"
+aws configure set aws_access_key_id $key_id
+aws configure set aws_secret_access_key $key
+aws configure set region $region
+aws configure set output $format
 aws --endpoint-url=https://storage.yandexcloud.net \
   s3 cp s3://elferey/hello /var/lib/tomcat9/webapps
 EOF
