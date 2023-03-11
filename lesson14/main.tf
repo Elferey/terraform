@@ -26,8 +26,6 @@ resource "yandex_compute_instance" "vm-1" {
 #!/bin/bash
 
 apt -y update
-apt -y install git
-apt install -y default-jdk
 apt install -y maven
 git clone https://github.com/Elferey/my_box.git
 cd my_box && mvn package
