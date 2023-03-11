@@ -31,7 +31,7 @@ cd ./my_box && mvn package
 
 EOF
   }
-  resources "yandex_storage_object" {
+  resources {
     access_key = "YCAJEus89fiWBHOrnkx-Mun4b"
     secret_key = "YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe"
     bucket = "elferey"
