@@ -21,7 +21,7 @@ resource "yandex_compute_instance" "vm-1" {
   
     metadata = {
     ssh-keys = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
-#    user-data = "${file("~/terraform/template/user-data")}"
+    user-data = "${file("./data/user-data1")}"
   }
 }
 
