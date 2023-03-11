@@ -25,20 +25,19 @@ resource "yandex_compute_instance" "vm-1" {
 #!/bin/bash
 
 apt -y update
-apt -y install git default-jdk maven
+apt -y install git default-jdk maven unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install
 cd ~/ && git clone https://github.com/Elferey/my_box.git
 cd ./my_box && mvn package
+echo -e "[default]\nregion = ru-central1" > ./.aws/config
+echo -e "[default]\naws_access_key_id = YCAJEus89fiWBHOrnkx-Mun4b\naws_secret_access_key = YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe" > ./.aws/credentials
+aws --endpoint-url=https://storage.yandexcloud.net/ \
+  s3 cp ./target/hello-1.0/ s3://elferey/hello
 
 EOF
   }
-}
-
-resource "yandex_storage_object" "hello" {
-  access_key = "YCAJEus89fiWBHOrnkx-Mun4b"
-  secret_key = "YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe"
-  bucket = "elferey"
-  key = "hello-1.0.war"
-  source = "build:/root/my_box/target/hello-1.0.war"
 }
 
 resource "yandex_compute_instance" "vm-2" {
