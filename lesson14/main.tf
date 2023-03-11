@@ -83,6 +83,7 @@ aws configure set aws_access_key_id $key_id
 aws configure set aws_secret_access_key $key
 aws configure set region $region
 aws configure set output $format
+sleep 5m
 aws --endpoint-url=https://storage.yandexcloud.net \
   s3 cp s3://elferey/hello /var/lib/tomcat9/webapps
 EOF
