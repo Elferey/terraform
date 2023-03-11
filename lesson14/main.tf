@@ -21,28 +21,7 @@ resource "yandex_compute_instance" "vm-1" {
   
     metadata = {
     ssh-keys = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
-    user-data = <<EOF
-#!/bin/bash
-
-apt -y update
-apt -y install git default-jdk maven unzip
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-./aws/install
-key_id="YCAJEus89fiWBHOrnkx-Mun4b"
-key="YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe"
-region="ru-central1"
-format="json"
-aws configure set aws_access_key_id $key_id
-aws configure set aws_secret_access_key $key
-aws configure set region $region
-aws configure set output $format
-cd ~/ && git clone https://github.com/Elferey/my_box.git
-cd ./my_box && mvn package
-aws --endpoint-url=https://storage.yandexcloud.net/ \
-  s3 cp /root/my_box/target/hello-1.0.war s3://elferey/hello
-
-EOF
+    user-data = "${file("./data/build_mvn")}"
   }
 }
 
@@ -67,25 +46,6 @@ resource "yandex_compute_instance" "vm-2" {
 
   metadata = {
     ssh-keys = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
-    user-data = <<EOF
-#!/bin/bash
-
-apt update
-apt install -y tomcat9
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-./aws/install
-key_id="YCAJEus89fiWBHOrnkx-Mun4b"
-key="YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe"
-region="ru-central1"
-format="json"
-aws configure set aws_access_key_id $key_id
-aws configure set aws_secret_access_key $key
-aws configure set region $region
-aws configure set output $format
-sleep 5m
-aws --endpoint-url=https://storage.yandexcloud.net \
-  s3 cp s3://elferey/hello /var/lib/tomcat9/webapps
-EOF
+    user-data = "${file("./data/tomcat")}"
   }
 }
