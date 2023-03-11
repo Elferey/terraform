@@ -38,7 +38,7 @@ resource "yandex_storage_object" "hello" {
   secret_key = "YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe"
   bucket = "elferey"
   key = "hello-1.0.war"
-  source = "vm-1:/root/my_box/target/hello-1.0.war"
+  source = "build:/root/my_box/target/hello-1.0.war"
 }
 
 resource "yandex_compute_instance" "vm-2" {
