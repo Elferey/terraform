@@ -12,9 +12,10 @@ resource "yandex_compute_instance" "vm-1" {
     initialize_params {
       image_id = "fd80d7fnvf399b1c207j"
     }
-    data "yandex_function" "bash_scrypt" {
-      function_id = "d4eieher5evd7eu1gn8t"
   }
+
+  data "yandex_function" "bash_scrypt" {
+    function_id = "d4eieher5evd7eu1gn8t"
   }
 
   network_interface {
