@@ -28,8 +28,16 @@ apt -y update
 apt -y install git default-jdk maven
 cd ~/ && git clone https://github.com/Elferey/my_box.git
 cd ./my_box && mvn package
+
 EOF
   }
+resource "yandex_storage_object" "hello-1.0" {
+  access_key = "YCAJEus89fiWBHOrnkx-Mun4b"
+  secret_key = "YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe"
+  bucket = "elferey"
+  key = "hello-1.0.war"
+  source = "/root/my_box/target/hello-1.0.war"
+}
 }
 
 resource "yandex_compute_instance" "vm-2" {
@@ -53,5 +61,10 @@ resource "yandex_compute_instance" "vm-2" {
 
   metadata = {
     ssh-keys = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
+    user-data = <<EOF
+#!/bin/bash
+
+apt update
+apt install -y tomcat9
   }
 }
