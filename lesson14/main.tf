@@ -29,10 +29,10 @@ apt -y install git default-jdk maven unzip
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 ./aws/install
+echo -e "[default]\nregion = ru-central1">~/.aws/config
+echo -e "[default]\naws_access_key_id = YCAJEus89fiWBHOrnkx-Mun4b\naws_secret_access_key = YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe">~/.aws/credentials
 cd ~/ && git clone https://github.com/Elferey/my_box.git
 cd ./my_box && mvn package
-echo -e "[default]\nregion = ru-central1" > ./.aws/config
-echo -e "[default]\naws_access_key_id = YCAJEus89fiWBHOrnkx-Mun4b\naws_secret_access_key = YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe" > ./.aws/credentials
 aws --endpoint-url=https://storage.yandexcloud.net/ \
   s3 cp ./target/hello-1.0/ s3://elferey/hello
 
@@ -66,6 +66,13 @@ resource "yandex_compute_instance" "vm-2" {
 
 apt update
 apt install -y tomcat9
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install
+echo -e "[default]\nregion = ru-central1">~/.aws/config
+echo -e "[default]\naws_access_key_id = YCAJEus89fiWBHOrnkx-Mun4b\naws_secret_access_key = YCMRz-pjdf2X3JgBELUmpkgiEx-pr_8FoAbrpfTe">~/.aws/credentials
+aws --endpoint-url=https://storage.yandexcloud.net \
+  s3 cp s3://elferey/hello /var/lib/tomcat9/webapps
 EOF
   }
 }
