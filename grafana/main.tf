@@ -71,5 +71,6 @@ resource "yandex_compute_instance" "vm-3" {
   
     metadata = {
     ssh-keys = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
+    user-data = "${file("./data/grafana")}"
   }
 }
