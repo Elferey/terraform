@@ -49,28 +49,3 @@ resource "yandex_compute_instance" "vm-2" {
     user-data = "${file("./data/tomcat")}"
   }
 }
-
-resource "yandex_compute_instance" "vm-3" {
-  name = "grafana"
-
-  resources {
-    cores  = 2
-    memory = 2
-  }
-
-  boot_disk {
-    initialize_params {
-      image_id = "fd80d7fnvf399b1c207j"
-    }
-  }
-
-  network_interface {
-    subnet_id = "e9b1hsqivfmdc1ncavj9"
-    nat       = true
-  }
-  
-    metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
-    user-data = "${file("./data/grafana")}"
-  }
-}
